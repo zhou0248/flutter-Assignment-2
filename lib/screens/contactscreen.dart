@@ -7,6 +7,7 @@ class ContactPage extends StatefulWidget {
   State<ContactPage> createState() => _ContactPageState();
 }
 
+//TODO: onSave function + validation function for each TextformField
 class _ContactPageState extends State<ContactPage> {
   final _formKey = GlobalKey<FormState>();
   @override
@@ -18,18 +19,50 @@ class _ContactPageState extends State<ContactPage> {
                 key: _formKey,
                 child: Column(children: [
                   Padding(
-                      padding: const EdgeInsets.only(top: 40),
+                      padding: const EdgeInsets.symmetric(vertical: 40),
                       child: Text('Contact Us',
                           style: Theme.of(context).textTheme.titleLarge)),
                   Padding(
-                    padding: const EdgeInsets.all(24.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
+                      autofocus: true,
                       decoration: const InputDecoration(
                           labelText: 'First Name',
-                          hintText: 'First Name',
+                          hintText: 'John',
+                          icon: Icon(Icons.person),
                           border: OutlineInputBorder()),
                     ),
-                  )
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                          labelText: 'Last Name',
+                          hintText: 'Smith',
+                          icon: Icon(Icons.person),
+                          border: OutlineInputBorder()),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                          labelText: 'Email',
+                          hintText: 'abc123@mail.com',
+                          icon: Icon(Icons.email),
+                          border: OutlineInputBorder()),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                          labelText: 'Message',
+                          hintText: 'Message',
+                          icon: Icon(Icons.message),
+                          border: OutlineInputBorder()),
+                    ),
+                  ),
                 ]))));
   }
 }

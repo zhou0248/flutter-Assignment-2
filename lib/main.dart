@@ -22,7 +22,17 @@ class MyApp extends StatelessWidget {
                   fontFamily: 'Exo',
                   fontSize: 28,
                   fontWeight: FontWeight.w700,
-                  color: const Color.fromARGB(255, 0, 53, 111)))),
+                  color: const Color.fromARGB(255, 0, 53, 111)),
+              titleSmall: TextStyle(
+                  fontFamily: 'Exo',
+                  fontSize: 20,
+                  fontStyle: FontStyle.italic,
+                  color: const Color.fromARGB(255, 2, 45, 0)),
+              bodySmall: TextStyle(
+                  fontFamily: 'Exo',
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: const Color.fromARGB(255, 37, 37, 0)))),
       home: const MainScreen(),
     );
   }

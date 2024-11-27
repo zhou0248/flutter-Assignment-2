@@ -30,19 +30,34 @@ class _DataPageState extends State<DataPage> {
               return Center(child: Text('Error: ${snapshot.error}'));
             } else if (snapshot.hasData) {
               final data = snapshot.data!;
-              return ListView.builder(
+              return GridView.builder(
                   itemCount: data.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisSpacing: 8.0,
+                      mainAxisSpacing: 8.0,
+                      crossAxisCount: 2,
+                      mainAxisExtent: 330),
                   itemBuilder: (context, index) {
                     return Card(
-                      child: ListTile(
-                        leading: Image.network(
-                          data[index].thumbnail,
-                          width: 50,
-                          height: 50,
-                          fit: BoxFit.cover,
-                        ),
-                        title: Text(data[index].name),
-                        subtitle: Text(data[index].description),
+                      child: Container(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Column(children: [
+                          Image.network(
+                            data[index].thumbnail,
+                            width: 80,
+                            height: 80,
+                            fit: BoxFit.cover,
+                          ),
+                          Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Text(
+                                data[index].name,
+                                style: Theme.of(context).textTheme.titleSmall,
+                              )),
+                          Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Text(data[index].description))
+                        ]),
                       ),
                     );
                   });

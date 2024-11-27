@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-                color: Theme.of(context).colorScheme.primary,
+                color: Theme.of(context).colorScheme.secondary,
                 child: Column(children: [
                   Padding(
                     padding: const EdgeInsets.all(18.0),

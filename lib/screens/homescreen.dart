@@ -6,7 +6,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+        body: SafeArea(
+      child: Column(
         children: [
           Expanded(
             child: Container(
@@ -19,20 +20,46 @@ class HomePage extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              color: Theme.of(context).colorScheme.primary,
-              child: Center(
-                child: Transform.rotate(
-                  angle: 0.3,
-                  child: Text(
-                    'Some Data',
-                    style: Theme.of(context).textTheme.bodyLarge,
+                color: Theme.of(context).colorScheme.primary,
+                child: Column(children: [
+                  Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: Text(
+                      'Transform.flip(flipY: false)',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
                   ),
-                ),
-              ),
-            ),
+                  Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: Transform.flip(
+                      flipY: true,
+                      child: Text(
+                        'Transform.flip(flipY: true)',
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: Text(
+                      'Transform.flip(flipX: false)',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: Transform.flip(
+                      flipX: true,
+                      child: Text(
+                        'Transform.flip(flipX: true)',
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      ),
+                    ),
+                  ),
+                ])),
           ),
         ],
       ),
-    );
+    ));
   }
 }

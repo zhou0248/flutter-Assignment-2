@@ -14,12 +14,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Navigation App',
       theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.white,
+              primary: const Color.fromARGB(255, 255, 232, 232)),
           textTheme: Theme.of(context).textTheme.copyWith(
               bodyLarge: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w900,
-                  color: Colors.grey[200]))),
+                  fontFamily: 'Exo',
+                  fontSize: 28,
+                  fontWeight: FontWeight.w700,
+                  color: const Color.fromARGB(255, 0, 53, 111)))),
       home: const MainScreen(),
     );
   }
@@ -44,7 +47,7 @@ class _MyHomePageState extends State<MainScreen> {
         selectedIndex: _currentIndex,
         destinations: [
           NavigationDestination(icon: (Icon(Icons.home)), label: 'Home'),
-          NavigationDestination(icon: (Icon(Icons.data_usage)), label: 'Data')
+          NavigationDestination(icon: (Icon(Icons.list)), label: 'Data')
         ],
         onDestinationSelected: (index) {
           setState(() {

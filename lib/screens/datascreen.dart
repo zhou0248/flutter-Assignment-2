@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -26,7 +25,7 @@ class _DataPageState extends State<DataPage> {
           future: _data,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
+              return Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
               return Center(child: Text('Error: ${snapshot.error}'));
             } else if (snapshot.hasData) {
@@ -58,15 +57,13 @@ class _DataPageState extends State<DataPage> {
     final response =
         await http.get(Uri.parse('https://dummyjson.com/products'));
     if (response.statusCode == 200) {
-      List<dynamic> jsonData = json.decode(response.body);
+      List<dynamic> jsonData = json.decode(response.body)['products'];
       return jsonData
-          .map(
-            (data) => Product(
-                id: data['id'],
-                name: data['name'],
-                description: data['description'],
-                thumbnail: data['thumbnail']),
-          )
+          .map((data) => Product(
+              id: data['id'],
+              name: data['title'],
+              description: data['description'],
+              thumbnail: data['thumbnail']))
           .toList();
     } else {
       throw Exception('Have trouble loading data');

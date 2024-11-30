@@ -72,5 +72,8 @@ flutter:
         - asset: assets/Exo-Regular.ttf
         - asset: assets/Exo-Bold.ttf
           weight: 700
+        - asset: assets/Exo-BoldItalic.ttf
+          weight: 700
+          style: italic
         - asset: assets/Exo-Italic.ttf
           style: italic

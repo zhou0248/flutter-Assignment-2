@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
                   fontFamily: 'Exo',
                   fontSize: 20,
                   fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.w700,
                   color: const Color.fromARGB(255, 2, 45, 0)),
               titleLarge: TextStyle(
                 fontFamily: 'Exo',

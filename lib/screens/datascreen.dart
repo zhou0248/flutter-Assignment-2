@@ -36,9 +36,10 @@ class _DataPageState extends State<DataPage> {
                       crossAxisSpacing: 8.0,
                       mainAxisSpacing: 8.0,
                       crossAxisCount: 2,
-                      mainAxisExtent: 330),
+                      mainAxisExtent: 326),
                   itemBuilder: (context, index) {
                     return Card(
+                      surfaceTintColor: Theme.of(context).colorScheme.secondary,
                       child: Container(
                         padding: const EdgeInsets.all(4.0),
                         child: Column(children: [
@@ -49,7 +50,7 @@ class _DataPageState extends State<DataPage> {
                             fit: BoxFit.cover,
                           ),
                           Padding(
-                              padding: const EdgeInsets.all(4.0),
+                              padding: const EdgeInsets.all(1.0),
                               child: Text(
                                 data[index].name,
                                 style: Theme.of(context).textTheme.titleSmall,

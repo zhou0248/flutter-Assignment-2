@@ -1,16 +1,6 @@
-# nav_app_assign2
+# Flutter Navigation Assignment
 
-A new Flutter project.
+## A Flutter App created for course MAD9135
 
-## Getting Started
+Find Assignment Requirements [Here](https://mad9135.github.io/F2024/deliverables/assign.html#_4-flutter-navigation-app)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

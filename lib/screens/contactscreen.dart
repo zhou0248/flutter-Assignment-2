@@ -7,9 +7,13 @@ class ContactPage extends StatefulWidget {
   State<ContactPage> createState() => _ContactPageState();
 }
 
-//TODO: onSave function + validation function for each TextformField
 class _ContactPageState extends State<ContactPage> {
   final _formKey = GlobalKey<FormState>();
+
+  String? name;
+  String? email;
+  String? message;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,16 +25,29 @@ class _ContactPageState extends State<ContactPage> {
               key: _formKey,
               child: Column(
                 children: [
+                  //Form Title
                   Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Text('Contact Us',
                           style: Theme.of(context).textTheme.titleLarge)),
+                  //Name Input Field
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       autofocus: true,
                       keyboardType: TextInputType.name,
                       textInputAction: TextInputAction.next,
+                      onSaved: (value) {
+                        name = value;
+                      },
+                      validator: (value) {
+                        if (value == null ||
+                            value.isEmpty ||
+                            value.length < 2) {
+                          return 'Please enter your name';
+                        }
+                        return null;
+                      },
                       decoration: const InputDecoration(
                           labelText: 'First and Last Name',
                           hintText: 'John Smith',
@@ -38,11 +55,24 @@ class _ContactPageState extends State<ContactPage> {
                           border: OutlineInputBorder()),
                     ),
                   ),
+                  //Email Input Field
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       keyboardType: TextInputType.emailAddress,
                       textInputAction: TextInputAction.next,
+                      onSaved: (value) {
+                        email = value;
+                      },
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your email';
+                        } else if (!value.contains('@') ||
+                            !value.contains('.')) {
+                          return 'Please enter a valid email address';
+                        }
+                        return null;
+                      },
                       decoration: const InputDecoration(
                           labelText: 'Email',
                           hintText: 'abc123@mymail.com',
@@ -50,11 +80,23 @@ class _ContactPageState extends State<ContactPage> {
                           border: OutlineInputBorder()),
                     ),
                   ),
+                  //Message Input Field
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       keyboardType: TextInputType.multiline,
                       textInputAction: TextInputAction.done,
+                      onSaved: (value) {
+                        message = value;
+                      },
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your message';
+                        } else if (value.length < 10) {
+                          return 'Message should be longer than 10 characters';
+                        }
+                        return null;
+                      },
                       minLines: 2,
                       maxLines: 4,
                       decoration: const InputDecoration(
@@ -64,14 +106,27 @@ class _ContactPageState extends State<ContactPage> {
                           border: OutlineInputBorder()),
                     ),
                   ),
+                  //Submit Button
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 15.0),
-                    child: OutlinedButton(
+                    child: ElevatedButton(
                       onPressed: () {
-                        const AlertDialog(
-                          title: Text("Message Sent!"),
-                          content: Text("Thank you for contacting us!"),
-                        );
+                        if (_formKey.currentState!.validate()) {
+                          _formKey.currentState!.save();
+                          showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                    title: Text("Message Sent!",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium),
+                                    content: Text(
+                                        "Thank you very much for contacting us! 😊 \nWe will get back to you as soon as possible.",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium),
+                                  ));
+                        }
                       },
                       child: Text('Send Message',
                           style: Theme.of(context).textTheme.titleSmall),
@@ -79,11 +134,6 @@ class _ContactPageState extends State<ContactPage> {
                         backgroundColor:
                             Theme.of(context).colorScheme.secondary,
                         padding: const EdgeInsets.all(10),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(22)),
-                        side: BorderSide(
-                            width: 2,
-                            color: Theme.of(context).colorScheme.primary),
                       ),
                     ),
                   )

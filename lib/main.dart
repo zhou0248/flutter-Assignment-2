@@ -14,11 +14,21 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Navigation App',
       theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-              seedColor: Colors.white,
-              primary: const Color.fromARGB(255, 59, 41, 41),
-              secondary: const Color.fromARGB(255, 206, 255, 225)),
-          textTheme: Theme.of(context).textTheme.copyWith(
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.white,
+            primary: const Color.fromARGB(255, 59, 41, 41),
+            secondary: const Color.fromARGB(255, 206, 255, 225)),
+        textTheme: Theme.of(context).textTheme.copyWith(
+              bodySmall: TextStyle(
+                  fontFamily: 'Exo',
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: const Color.fromARGB(255, 37, 37, 0)),
+              bodyMedium: TextStyle(
+                  fontFamily: 'Exo',
+                  fontSize: 22,
+                  fontWeight: FontWeight.w600,
+                  color: const Color.fromARGB(255, 0, 53, 111)),
               bodyLarge: TextStyle(
                   fontFamily: 'Exo',
                   fontSize: 28,
@@ -30,16 +40,18 @@ class MyApp extends StatelessWidget {
                   fontStyle: FontStyle.italic,
                   fontWeight: FontWeight.w700,
                   color: const Color.fromARGB(255, 2, 45, 0)),
+              titleMedium: TextStyle(
+                  fontFamily: 'Exo',
+                  fontSize: 28,
+                  fontWeight: FontWeight.w700,
+                  color: const Color.fromARGB(255, 2, 45, 0)),
               titleLarge: TextStyle(
                 fontFamily: 'Exo',
                 fontSize: 36,
                 fontWeight: FontWeight.w700,
               ),
-              bodySmall: TextStyle(
-                  fontFamily: 'Exo',
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: const Color.fromARGB(255, 37, 37, 0)))),
+            ),
+      ),
       home: const MainScreen(),
     );
   }
